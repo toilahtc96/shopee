@@ -1,15 +1,15 @@
-<h1>SADASD</h1>
+<h1>Lay Thoi Gian</h1>
 <div id="rs"></div>
 <button onclick="test()">Cilck</button>
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script>
     test = () => {
-        
+
         var url = '/test';
         // console.log('client url:', url);
 
         // HTTP GET http://localhost:3000/test?level=
-        $.get(url, function (data) {
+        $.get(url, function(data) {
             console.log('client data:', data); // browser console
             $('#rs').text(data)
         });

@@ -11,7 +11,7 @@ const nodemailer = require('nodemailer')
 const smtpTransport = require('nodemailer-smtp-transport');
 
 
-app.listen(port, function (err) {
+app.listen(port, function(err) {
     if (err) {
         console.error('Something error !!');
         console.error(err);
@@ -25,7 +25,7 @@ app.get("/", (req, res) => {
 
 app.get("/test", (req, res) => {
 
-    const data = async () => {
+    const data = async() => {
         console.log("test")
         let bookcarUrl = 'https://hasonhaivan.vn/admin_lv2/modules/account/login.php';
 
@@ -56,7 +56,7 @@ app.get("/test", (req, res) => {
 
         await page.waitForSelector(".view_adm_search_element");
         await page.select(".form-control.bvv_ca_select", "1")
-        // await page.select(".form-control.bvv_ca_select", "")
+            // await page.select(".form-control.bvv_ca_select", "")
 
         await page.click(".form-control.bv_form_day.hasDatepicker")
 
@@ -69,16 +69,18 @@ app.get("/test", (req, res) => {
 
         const date = await page.$$('.d');
         await date[16].click()
-        console.log(date)
+            // console.log(date)
+            // await page.waitFor(2000)
+
+        await page.waitForNavigation()
 
         await page.focus('.form-control.bv_form_day.hasDatepicker')
-        // await page.$$eval('.d', (e) => { console.log(e) })
+            // await page.$$eval('.d', (e) => { console.log(e) })
 
         await page.waitForSelector(".bv_top_not_li");
 
         const dataChuyen = await page.$$eval('ul.dropdown-menu.bv_menu_a.not_colum_2 > li.bv_top_not_li', (e) => {
 
-            console.log(e)
             var input = [];
             e.forEach(async li => {
                 const listchuyendi = li.getElementsByClassName('did_stt_1 menu_loai_xe_1 ');
@@ -93,7 +95,7 @@ app.get("/test", (req, res) => {
                         input.push(thongtinchuyen);
                         input.push('\n')
                         console.log(thongtinchuyen)
-                        // }
+                            // }
 
                     }
                 }
@@ -103,11 +105,11 @@ app.get("/test", (req, res) => {
             return input;
         });
         // console.log(dataChuyen)
-        stringify(dataChuyen, function (err, output) {
+        stringify(dataChuyen, function(err, output) {
             fs.writeFile("output.csv", dataChuyen.join('\t'), 'utf-8');
         });
         console.log(dataChuyen.join('\t'))
-        // sendEmail(dataChuyen.join(','))
+            // sendEmail(dataChuyen.join(','))
 
 
 
