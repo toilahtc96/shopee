@@ -1,6 +1,7 @@
 <h1>Lay Thoi Gian</h1>
 <div id="rs"></div>
-<button onclick="test()">Cilck</button>
+<button onclick="test()">Login</button>
+<button onclick="newTab()">OpenNewTab</button>
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script>
     test = () => {
@@ -9,10 +10,23 @@
         // console.log('client url:', url);
 
         // HTTP GET http://localhost:3000/test?level=
-        $.get(url, function(data) {
+        $.get(url, function (data) {
             console.log('client data:', data); // browser console
-            $('#rs').text(data)
+            
         });
 
     }
+
+    newTab = () => {
+
+        var url = '/newtab';
+        // console.log('client url:', url);
+
+        // HTTP GET http://localhost:3000/test?level=
+        $.get(url, function (data) {
+            console.log('client data:', data); // browser console
+        });
+
+    }
+
 </script>
