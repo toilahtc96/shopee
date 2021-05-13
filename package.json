@@ -1,6 +1,7 @@
 {
   "lockfileVersion": 1,
   "dependencies": {
+    "body-parse": "^0.1.0",
     "csv-stringify": "^5.6.2",
     "express": "^4.17.1",
     "file-system": "^2.2.2",
@@ -9,10 +10,7 @@
     "puppeteer": "^9.1.1"
   },
   "scripts": {
-
     "start": "node index.js"
-  
   },
-  
   "main": "index.js"
 }

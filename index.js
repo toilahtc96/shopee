@@ -9,9 +9,14 @@ const stringify = require('csv-stringify');
 const fs = require('file-system');
 const nodemailer = require('nodemailer')
 const smtpTransport = require('nodemailer-smtp-transport');
-
+const bodyParser = require('body-parser')
 const { getBrowserInstance } = require('./instance');
 
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
 
 app.listen(port, function (err) {
     if (err) {
@@ -61,4 +66,20 @@ app.get("/newtab", (req, res) => {
     };
     createNewTab();
 
+})
+
+app.post("/goToProduct", (req, res) => {
+
+    var link = req.body.link;
+    console.log(link);
+    const createNewTab = async () => {
+
+        const browser = await getBrowserInstance();
+        console.log("browser" + browser);
+        
+        const page1 = await browser.newPage();
+        await page1.goto(link, { waitUntil: 'networkidle2' });
+
+    };
+    createNewTab();
 })

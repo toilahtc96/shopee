@@ -1,7 +1,11 @@
 <h1>Lay Thoi Gian</h1>
 <div id="rs"></div>
 <button onclick="test()">Login</button>
-<button onclick="newTab()">OpenNewTab</button>
+<form action="goToProduct" method="post">
+    <input type="text" name="link" id="link"/> 
+    <button type="submit">Toi san pham</button>
+</form>
+<!-- <button onclick="newTab()">OpenNewTab</button> -->
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script>
     test = () => {
